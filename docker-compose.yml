@@ -1,0 +1,11 @@
+services:
+  psp:
+    build: .
+    ports: ["3000:3000"]
+    environment:
+      JWT_SECRET: ${JWT_SECRET:?set a 24+ char secret}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
+      COOKIE_SECURE: ${COOKIE_SECURE:-0}
+    volumes: ["psp-data:/data"]
+volumes:
+  psp-data:

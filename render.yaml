@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: psp-monitoring
+    runtime: docker
+    plan: starter
+    healthCheckPath: /
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: COOKIE_SECURE
+        value: "1"
+    disk:
+      name: psp-data
+      mountPath: /data
+      sizeGB: 1
